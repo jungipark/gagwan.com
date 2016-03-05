@@ -1,0 +1,8 @@
+<p>{{ user.email }} 님</p>
+<p><b>가천대 강의평가 사이트 가입을 환영합니다!</b></p>
+<p>옆 링크를 눌려주시면 가입이 완료됩니다. <a href="{{ url_for('auth.confirm', token=token, _external=True) }}">클릭</a>.</p>
+<p>만약 옆 링크가 안눌리신다면 아래 주소를 웹 브라우져 주소창에 복사 후 붙여넣어 주세요.</p>
+<p>{{ url_for('auth.confirm', token=token, _external=True) }}</p>
+
+<p>가천대 관심강의</p>
+<p><small>이 메일은 수신용으로 사용되지 않습니다.</small></p>

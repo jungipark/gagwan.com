@@ -1,0 +1,150 @@
+{% import "bootstrap/wtf.html" as wtf %}
+
+<!DOCTYPE html>
+<html>
+<head lang="kr">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=10">
+    <title>가천대 관심강의 : 회원가입</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/star-rating.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/gagwan-auth.css') }}">
+
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-65257020-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+</head>
+
+<body style="background-image: url('{{ url_for('static', filename = 'img/vita.png') }}'); background-size: cover">
+
+
+<div class="row auth-register">
+    <div class="col-md-2">
+    </div>
+
+    <div class="col-md-8 col-sm-8" style="padding: 5%;">
+        <div class="register"
+             style="background-image: url('{{ url_for('static', filename = 'img/saerom.png') }}');background-size: cover;">
+
+
+            <div class="row">
+                <p align="center" style="font-size: 30px">회원가입</p>
+
+                <p align="center" style="font-size: 17px; margin-bottom: 3px;">여러분의 강의정보를 공유해주세요!</p>
+
+                <p align="center" style="font-size: 13px">이 사이트는 닉네임 기반으로 운영됩니다.<br></p>
+
+
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <br>
+                        <ul class=flashes>
+                            {% for message in messages %}
+                                <h5 style="text-align: center">{{ message }}</h5>
+                            {% endfor %}
+                        </ul>
+                        <br>
+                    {% endif %}
+                {% endwith %}
+
+                {% if form.errors %}
+                    <ul class="errors">
+                        {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+                            {% for error in field_errors %}
+                                <h5 style="text-align: center">{{ form[field_name].label }}: {{ error }}</h5>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <div class="register-content">
+                    <form class="form" , role="form" , method="post" action="{{ url_for('auth.register') }}">
+                        {{ form.hidden_tag() }}
+                        <dt>
+                            <label for="email" class="label-email">E-mail</label>
+                        </dt>
+                        <div class="row">
+
+                            <div class="col-md-8 register-email">
+                                {{ form.email(placeholder="your-email@example.com", class="form-control", requiredtype="text", autofocus="") }}
+                            </div>
+
+                        </div>
+
+                        <dt>
+                            <label for="nickname" class="label-nickname">닉네임</label>
+                        </dt>
+                        <div class="row ">
+                            <div class="col-md-8 register-nickname">
+                                {{ form.nickname(placeholder="사용할 닉네임", class="form-control", requiredtype="text") }}
+                            </div>
+                        </div>
+
+
+                        <dt>
+                            <label for="year" class="label-year">입학년도</label>
+                        </dt>
+                        <div class="row">
+                            <div class="col-md-8 register-year">
+                                {{ form.student_num(placeholder="ex) 2008", class="form-control",requiredtype="text") }}
+                            </div>
+                        </div>
+
+                        <dt>
+                            <label for="password" class="label-password">비밀번호</label>
+                        </dt>
+                        <div class="row">
+                            <div class="col-md-8 register-password">
+                                {{ form.password(placeholder="비밀번호", class="form-control",requiredtype="text") }}
+                            </div>
+                        </div>
+
+
+                        <dt>
+                            <label for="re_password" class="label-re_password">비밀번호 확인</label>
+                        </dt>
+                        <div class="row">
+                            <div class="col-md-8 register-re_password">
+                                {{ form.password_confirm(placeholder="비밀번호 확인",class="form-control", requiredtype="text") }}
+                            </div>
+                        </div>
+
+                        <div class="row" style="text-align: center">
+                            {{ form.submit(class="btn btn-defalut") }}
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-2">
+        </div>
+
+    </div>
+
+</body>
+
+
+</html>

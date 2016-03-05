@@ -1,0 +1,9 @@
+Dear {{ user.email }},
+
+가천대 강의평가 사이트에 가입해주셔서 감사합니다.
+
+이 링크를 누르면 가입이 완료됩니다 :
+
+{{ url_for('auth.confirm', token=token, _external=True) }}
+
+가천대 관심강의

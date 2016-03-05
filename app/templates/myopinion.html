@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+
+{% block title %} {{ super() }} {% endblock %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/star-rating.css') }}">
+
+{% endblock %}
+
+
+{% block content %}
+    <!-- Modal -->
+    <form id="modal-form" action="" method="POST" name="evaluation">
+        <div id="editOpinionModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title"></h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12 modal-evl">
+                                <div class="evl">
+                                        <span class="evl-title"
+                                              style="margin-left:6px;margin-right:27.3px;">출석</span>{{ evlform.attendance_score(id="evl-attendent", class="evl-star rating opinion evl-attendent") }}
+                                </div>
+                                <div class="evl"><span class="evl-title"
+                                                       style="margin-left:6px;margin-right:27.3px;">성적</span>{{ evlform.grade_score(id="evl-grade",class="evl-star rating opinion evl-grade") }}
+                                </div>
+                                <div class="evl"><span
+                                        class="evl-title">학습량</span>{{ evlform.amount_score(id="evl-amount",class="evl-star rating opinion evl-amount") }}
+                                </div>
+                                <div class="evl"><span
+                                        class="evl-title">배운점</span>{{ evlform.learn_score(id="evl-learning", class="evl-star rating opinion evl-learning") }}
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <span class="evl-opinion-title">의견 :{{ myopinion.profNm }}<br/></span>
+                        <span class="evl-opinion">{{ evlform.opinion(id="text-opinion",row="3",cols="60") }}</span>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        {{ evlform.submit(id="submitOpinion",class="btn btn-primary") }}
+                        <button id="closeOpinion" type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+
+
+
+    <div class="col-md-3">
+    </div>
+
+
+    <div class="col-md-6 myopinion">
+        <p class="new-title"><b>나의 강의평 (총 {{ count }}개)</b></p>
+        {% if count == 0 %}
+            <h4 style="text-align: center; margin-top: 100px; "> 아직 하신 강의평가가 없으시네요ㅠㅠ <br>
+                강의평가 남겨주실꺼죠?</h4>
+        {% endif %}
+        {% for myopinion in myopinion %}
+
+            <div class="row opinion-card">
+                <div class="row header">
+                    <div class="title">
+                        <span><a class="link-lec"
+                                 href="{{ url_for('main.evaluation',lecture_id=myopinion.lecture_id) }}"> {{ myopinion.subjectNm }} </a></span>
+                        <span class="profNm"> {{ myopinion.profNm }} 교수님 </span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-7 col-sm-7">
+                        <div class="col-md-12 userNickname">
+                            <p class="userName"><span class="user">작성자 :</span><b><span
+                                    class="nickname"> {{ myopinion.nickname }}</span> </b></p> <span
+                                class="time">({{ myopinion.evl_time }})</span>
+                        </div>
+                        <div id="userOpi" class="userOpinion col-sm-12">{{ myopinion.opinion }}</div>
+                    </div>
+
+                    <div class="col-md-5 col-sm-5">
+                        <div class="opinion-star row">
+                            <span class="star-name col-md-3 col-xs-3">출석</span>
+                            <span class="star col-md-8 col-xs-8"><input value="{{ myopinion.attendance_score }}"
+                                                                        type="number" class="view star-attendence"
+                                                                        data-size="xs" disabled="true"></span>
+                        </div>
+
+
+                        <div class="opinion-star row">
+                            <span class="star-name col-md-3 col-xs-3">성적</span>
+                            <span class="star col-md-8 col-xs-8"><input value="{{ myopinion.grade_score }}"
+                                                                        type="number" class="view star-grade"
+                                                                        data-size="xs" disabled="true"></span>
+                        </div>
+
+                        <div class="opinion-star row">
+                            <span class="star-name col-md-3 col-xs-3">학습량</span>
+                            <span class="star col-md-8 col-xs-8"><input value="{{ myopinion.amount_score }}"
+                                                                        type="number" class="view star-amount"
+                                                                        data-size="xs" disabled="true"></span>
+                        </div>
+
+                        <div class="opinion-star row">
+                            <span class="star-name col-md-3 col-xs-3">배운점</span>
+                            <span class="star col-md-8 col-xs-8"><input value="{{ myopinion.learn_score }}"
+                                                                        type="number" class="view star-learning"
+                                                                        data-size="xs" disabled="true"></span>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="row bottom">
+                    <div id="{{ myopinion.id }}" class="col-md-12 bottom-inner" style="text-align: center;">
+
+                        <span class="update"><b><a data-toggle="modal" data-target="#editOpinionModal"><i
+                                class="glyphicon glyphicon-pencil"></i> 수정</a></b></span>
+                        <span class="delete"><b><a href="#" class="button"><i class="glyphicon glyphicon-trash"></i> 삭제</a></b></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        {% endfor %}
+
+
+    </div>
+
+    <div class="col-md-3">
+
+    </div>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+     <script src="{{ url_for('static', filename='js/gagwan-myopinion.js') }}" type="text/javascript"></script>
+
+
+{% endblock %}

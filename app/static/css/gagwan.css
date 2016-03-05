@@ -1,0 +1,578 @@
+@charset "UTF-8";
+
+
+
+
+/*
+전체 CSS
+*/
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background:#F5F5F5;
+    height: 100%;
+}
+
+body .wrap{
+    position: relative;
+    min-height: 100%;
+   
+    
+}
+
+
+body .navbar {
+    
+    background-color: #4880D8;
+    color: #FFF;
+
+}
+
+
+.navbar .navbar-brand{
+    color: #FEFEFE;
+}
+
+.navbar .nav .font{
+    color: #FEFEFE;
+}
+
+.navbar-default .navbar-nav > li > a{
+    color: #FEFEFE;
+}
+
+
+/*
+index CSS
+*/
+
+body .index .new-title {
+    font-size: 22px;
+}
+
+body .index .title {
+    border-bottom: 1px solid #ddd
+}
+
+body .index .header {
+    margin-top: 13px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+body .index .userNickname{
+    margin: 15px;
+    margin-top: 8px;
+    padding-left: 10px;
+}
+
+body .index .userNickname .user{
+    font-size: 16px;
+    color: #767676;
+}
+
+body .index .userNickname .user{
+    font-size: 16px;
+    color: #767676;
+}
+
+body .index .userNickname .time{
+    font-size: 13px;
+    color: #767676;
+}
+
+
+body .index .userName{
+    margin-bottom: 0px;
+}
+
+body .index .userName .nickname{
+    font-size: 16px;
+    color: #168CCC;
+}
+
+
+body .index .userOpinion{
+    margin: 10px;
+    margin-top: 0px;
+}
+
+
+
+body .index .opinion-card {
+    border: 1px solid #ddd;
+    background-color: white;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    padding: 13px;
+}
+
+body .index .opinion-card .profNm {
+    font-size: 13px;
+    color: #767676;
+}
+
+body .index .opinion-card .link-lec {
+    font-size: 22px;
+    font-weight: 500;
+}
+body .index .opinion-card .col-md-5 {
+    padding-left: 10px;
+    padding-right: 0px;
+}
+
+body .index .opinion-card .opinion-star {
+    font-size: 13px;
+    color: #767676;
+
+
+    
+}
+
+body .index .opinion-card .opinion-star {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    
+}
+
+body .index .opinion-card .star-name {
+    font-size: 14px;
+    color: #168CCC;
+    text-align: center;
+    margin-top: 12px;
+    
+}
+
+body .index .opinion-card .star {
+    font-size: 14px;
+    text-align: center;
+    
+}
+
+
+/*
+@media only screen and (min-width : 768px)
+body .index .opinion-card .opinion-star .star-name{
+    top :50%;
+}
+*/
+
+
+/*
+Evaluation CSS
+*/
+body .evaluation .lecture-card {
+    border: 1px solid #ddd;
+    background-color: white;
+    margin-bottom: 10px;
+    border-radius: 6px;
+}
+
+body .evaluation .lecture-card .prof-pic {
+    padding: 40px;
+    padding-top: 35px;
+    padding-left: 50px;
+    text-align: center;
+}
+
+body .evaluation .lecture-card .prof-pic .pic {
+    width: 110px;
+    height: 130px;
+}
+
+body .evaluation .lecture-card .lec-info {
+    padding-top: 35px;
+    padding-left: 35px;
+}
+
+body .evaluation .lecture-card .lec-info-detail {
+    padding-top: 5px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+body .evaluation .lecture-card .lec-info-detail .title {
+    font-size: 14px;
+    color: #767676;
+}
+
+
+body .evaluation .lecture-card .graph {
+    padding-left: 0px;
+}
+
+body .evaluation .lecture-card .graph #canvas {
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+
+body .evaluation .lecture-card .lecture-card-button {
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+
+body .evaluation .opinion-card {
+    border: 1px solid #ddd;
+    background-color: white;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    padding: 13px;
+}
+
+body .evaluation .opinion-card .profNm {
+    font-size: 13px;
+    color: #767676;
+}
+
+body .evaluation .opinion-card .link-lec {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+body .evaluation .opinion-card .opinion-star {
+    font-size: 13px;
+    color: #767676;
+     height: 60px;
+}
+
+body .evaluation .row .opinion-card .star-name {
+    font-size: 14px;
+
+    color: #168CCC;
+    text-align: center;
+    margin-top: 13px;
+}
+
+body .evaluation .row .opinion-card .star {
+    font-size: 14px;
+
+    height: 40px;
+    padding-right: 20px;
+}
+
+
+body .evaluation .userName{
+    margin-bottom: 0px;
+}
+
+body .evaluation .userName .nickname{
+    font-size: 16px;
+    color: #168CCC;
+}
+
+
+
+body .evaluation .userNickname .user{
+    font-size: 16px;
+    color: #767676;
+}
+
+body .evaluation .userNickname .time{
+    font-size: 13px;
+    color: #767676;
+}
+
+body .evaluation .userOpinion{
+    margin-top: 20px;
+}
+
+body .evaluation .card-content .userNickname{
+    margin-left: 15px;
+}
+
+
+body .evaluation .opinion-card .card-content {
+    padding: 20px;
+}
+
+
+body .evaluation .opinion-card .opinion-star {
+    font-size: 13px;
+    color: #767676;
+     height: 60px;
+}
+
+body .evaluation .opinion-card .star-name {
+    font-size: 14px;
+
+    color: #168CCC;
+    text-align: center;
+    margin-top: 15px;
+}
+
+body .evaluation .opinion-card .star {
+    font-size: 14px;
+
+    height: 40px;
+    padding-right: 20px;
+}
+
+body .evaluation .opinion-star .star {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+/*
+Evaluation, MyOpinion Modal CSS
+*/
+
+body .modal .modal-body .evl {
+    margin: 10px;
+    width: auto;
+    height: 50px;
+}
+
+body .modal .modal-body .evl .rating-container{
+    margin-bottom: 8px;
+}
+
+body .modal .modal-body .star-rating .caption{
+    margin-bottom: 8px;
+    margin-left: 5px;
+}
+
+body .modal .modal-body .evl .rating-xs{
+    font-size: 2.3em;
+}
+
+
+
+body .modal .modal-body .evl .evl-title{
+    font-size: 15px;
+    color: #168CCC;
+    font-size: 14px;
+    float: left;
+    text-align: center;
+    margin-top: 5px;
+    padding-top: 7px;
+    margin-right: 20px;
+}
+
+body .modal .modal-body .evl .evl-star{
+    font-size: 10px;
+    float: right;
+    height: 40px;
+}
+
+body .modal .modal-body .evl .evl-star .caption{
+    margin-left: 10px; 
+}
+
+
+body .modal .modal-body{
+    padding-top: 0px;
+}
+
+
+
+
+/*
+profile CSS
+*/
+body .account .col-md-3{
+    margin-top: 15px;
+    padding-left:40px;
+}
+
+
+
+body .profile {
+    background-color: white;
+    border-radius: 7px;
+    border-style: solid;
+    border-color: #EAEAEA #EAEAEA #DDD;;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-top: 20px;
+    
+}
+
+
+
+body .profile .profile-header {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+body .profile .profile-name{
+    margin-top: 7px;
+    margin-bottom: 7px;
+    margin-left: 0px;  
+    font-weight: 600;
+    font-size: 23px;
+    
+}
+
+body .profile .row {
+      border-top: 1px solid #CCC;
+      border-top: 1px solid #CCC;
+      margin: 0;
+}
+
+body .profile .row-bottom-line {
+      border-top: 1px solid #CCC;
+      border-bottom: 1px solid #CCC;
+      margin: 0;
+}
+
+
+body .profile .row .col-md-2 {
+    margin: 15px;
+}
+
+body .profile .row .col-md-6 {
+    margin: 15px;
+    margin-left: -20px;
+}
+
+
+
+
+/*
+myopinion CSS
+*/
+
+body .myopinion .new-title {
+    font-size: 22px;
+}
+
+body .myopinion .title {
+    border-bottom: 1px solid #ddd
+}
+
+
+body .myopinion .header {
+    margin-top: 13px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+body .myopinion .userNickname{
+    margin: 15px;
+    margin-top: 8px;
+    padding-left: 10px;
+}
+
+body .myopinion .userNickname .user{
+    font-size: 16px;
+    color: #767676;
+}
+
+body .myopinion .userNickname .user{
+    font-size: 16px;
+    color: #767676;
+}
+
+body .myopinion .userNickname .time{
+    font-size: 13px;
+    color: #767676;
+}
+
+
+body .myopinion .userName{
+    margin-bottom: 0px;
+}
+
+body .myopinion .userName .nickname{
+    font-size: 16px;
+    color: #168CCC;
+}
+
+
+body .myopinion .userOpinion{
+    margin: 10px;
+    margin-top: 0px;
+}
+
+
+body .myopinion .container .col-sm-12{
+    margin: 10px;
+    margin-top: 0px;
+    margin-bottom: 30px;
+}
+
+body .myopinion .opinion-card {
+    border: 1px solid #ddd;
+    background-color: white;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    padding :13px;
+}
+
+body .myopinion .opinion-card .profNm {
+    font-size: 13px;
+    color: #767676;
+}
+
+body .myopinion .opinion-card .link-lec {
+    font-size: 22px;
+    font-weight: 500;
+}
+body .myopinion .opinion-card .col-md-5 {
+    padding-left: 10px;
+    padding-right: 0px;
+}
+
+body .myopinion .opinion-card .opinion-star {
+    font-size: 13px;
+    color: #767676;
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+}
+
+body .myopinion .opinion-card .star-name {
+    font-size: 14px;
+
+    color: #168CCC;
+    text-align: center;
+    margin-top: 12px;
+
+}
+
+
+body .myopinion .opinion-card .star {
+    font-size: 14px;
+}
+
+
+body .myopinion .opinion-card .bottom{
+    margin-bottom: 20px;
+}
+
+
+body .myopinion .opinion-card .bottom-inner{
+    text-align: center;
+}
+
+body .myopinion .opinion-card .bottom-inner .update{
+    margin-right: 20px;
+}
+
+body .myopinion .opinion-card .bottom-inner .button {
+    color: black;
+    font-size: 14px;
+}
+
+
+
+
+/*
+footer CSS
+*/
+
+body .footer {
+    background-color: white;
+    border-bottom-color: #e7e7e7;
+    height: 50px;
+}

@@ -1,0 +1,20 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}가천대 관심강의 - 가천대 웹메일을 확인해주세요.{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>
+        Hello, {{ current_user.email }}!
+    </h1>
+    <h3>아직 메일인증이 되지 않았습니다.</h3>
+    <p>
+        가천대 관심강의 사이트를 이용하려면, 가천대 웹메일 인증이 필요합니다.
+        웹 메일에서 인증해주세요.
+    </p>
+    <p>
+        인증메일 다시 받기
+        <a href="{{ url_for('auth.resend_confirmation') }}">Click here</a>
+    </p>
+</div>
+{% endblock %}

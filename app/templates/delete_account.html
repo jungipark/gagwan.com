@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %} 가천대 관심강의 : GaGwan.com {% endblock %}
+
+{% block content %}
+
+
+    <div class="row account">
+
+        <div class="col-md-3">
+           <a href="{{ url_for('main.profile') }}"><strong><i class="glyphicon glyphicon-user"></i>&nbsp; &nbsp;계정</strong></a>
+            <hr>
+            <ul class="nav nav-pills nav-stacked">
+                <li class="nav-header"></li>
+                <li><a href="{{ url_for('main.reset_password') }}"><i class="glyphicon glyphicon-cog"></i> &nbsp;비밀번호변경 </a></li>
+                <li><a href="#"><i class="glyphicon glyphicon-refresh"></i> &nbsp;닉네임 변경</a></li>
+                <li><a href="#"><i class="glyphicon glyphicon-remove"></i> &nbsp;회원탈퇴</a></li>
+            </ul>
+        </div>            
+
+        <div class="col-md-8 profile">
+            <form action="{{ url_for('main.reset_password') }}" method="post" name="reset_password">
+                <div class="profile-header">
+                    <span><h3 class="profile-name">회원탈퇴</h3></span>
+
+
+                    <span>
+
+                        {% with messages = get_flashed_messages() %}
+                          {% if messages %}
+                            <ul class=flashes>
+                            {% for message in messages %}
+                              <li>{{ message }}</li>
+                            {% endfor %}
+                            </ul>
+                          {% endif %}
+                        {% endwith %}
+
+                    </span>
+                </div>
+                    <div class="row">
+                        
+                        <div class="row profile-user">
+                           <h4>회원 탈퇴페이지 입니다. 탈퇴하시면, 작성하신 모든 강의평들이 삭제됩니다.</h4>
+                        </div>
+
+
+
+
+                    </div>
+                </form>
+        </div>
+
+
+
+
+    </div>
+
+{% endblock %}

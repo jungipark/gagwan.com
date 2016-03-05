@@ -1,0 +1,257 @@
+{% extends "base.html" %}
+
+{% block title %} 가천대 관심강의 : GaGwan.com {% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/star-rating.css') }}">
+
+{% endblock %}
+
+{% block content %}
+
+
+
+    <!-- Modal -->
+    <form action="{{ url_for('main.evaluation',lecture_id=results.id) }}" method="POST" name="evaluation">
+        <div id="opinionModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">{{ results.subjectNm }} 강의평가</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12 modal-evl">
+                                <div class="evl">
+                                    <span class="evl-title"
+                                          style="margin-left:6px;margin-right:27.3px;">출석</span>{{ evlform.attendance_score(id="evl-attendent", class="evl-star rating opinion evl-attendent") }}
+                                </div>
+                                <div class="evl"><span class="evl-title"
+                                                       style="margin-left:6px;margin-right:27.3px;">성적</span>{{ evlform.grade_score(id="evl-grade",class="evl-star rating opinion evl-grade") }}
+                                </div>
+                                <div class="evl"><span
+                                        class="evl-title">학습량</span>{{ evlform.amount_score(id="evl-amount",class="evl-star rating opinion evl-amount") }}
+                                </div>
+                                <div class="evl"><span
+                                        class="evl-title">배운점</span>{{ evlform.learn_score(id="evl-learning", class="evl-star rating opinion evl-learning") }}
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <span class="evl-opinion-title">의견 :<br/></span>
+                        <span class="evl-opinion">{{ evlform.opinion(id="text-opinion",row="3",cols="60") }}</span>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        {{ evlform.submit(id="submitOpinion",class="btn btn-primary") }}
+                        <button id="closeOpinion" type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+
+
+
+
+
+
+    <div class="col-md-3">
+    </div>
+
+    <div class="col-md-6 evaluation">
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class=flashes>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <div class="lecture-card">
+            <div class="row">
+                <div class="col-md-3 col-sm-3 col-xs-6 prof-pic"><img class="pic"
+                                                                      src="/static/img/prof_pic/{{ results.proCD }}.jpg"
+                                                                      onerror="this.src='/static/img/2.png'">
+                </div>
+
+                <div class="col-md-5 col-sm-4 col-xs-6 lec-info">
+                    <div class="lec-info-detail">
+                        <span class="title">학기 :</span> <span class="content"> {{ results.semester }}</span>
+                    </div>
+
+                    <div class="lec-info-detail">
+                        <span class="title">교수명 :</span> <span class="content">{{ results.profNm }}</span>
+                    </div>
+
+                    <div class="lec-info-detail">
+                        <span class="title">강의명 :</span> <span class="content">{{ results.subjectNm }}</span>
+                    </div>
+
+                    <div class="lec-info-detail">
+                        <span class="title">이수구분 :</span> <span class="content">{{ results.isuNm }}</span>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-5 graph">
+                    <div style="width:100%;">
+                        <canvas id="avgChart" height="200px" width="200px"></canvas>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="row lecture-card-button">
+
+                <div class="col-md-12" style="text-align:center;margin:15px">
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
+                            data-target="#opinionModal">
+                        평가하기
+                    </button>
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        {% for evlcomment in evlcomment %}
+
+            <div class="opinion-card">
+                <div class="row">
+                    <span id="report" class="report" style="float:right; margin-bottom:15px; padding-right:20px;"><a href="#"><i
+                            class="glyphicon glyphicon-bell"><b>신고</b></i></a></span>
+                </div>
+                <div class="row card-content">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="row userNickname">
+                            <p class="userName"><span class="user">작성자 :</span><span
+                                    class="nickname"><b> {{ evlcomment.nickname }}</b></span></p> <span
+                                class="time">({{ evlcomment.evl_time }})</span>
+                        </div>
+                        <div class="userOpinion col-md-12">
+                            {{ evlcomment.opinion }}
+
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+
+                        <div class="opinion-star row">
+                            <span class="star-name col-md-4 col-xs-3">출석</span>
+                            <span class="star col-md-8 col-xs-8"><input value="{{ evlcomment.attendance_score }}"
+                                                                        type="number"
+                                                                        class="view rating star-attendence"
+                                                                        data-size="xs" disabled="true"></span>
+                        </div>
+
+
+                        <div class="opinion-star row">
+                            <span class="star-name col-md-4 col-xs-3">성적</span>
+                            <span class="star col-md-8 col-xs-3"><input value="{{ evlcomment.grade_score }}"
+                                                                        type="number" class="view rating star-grade"
+                                                                        data-size="xs" disabled="true"></span>
+                        </div>
+
+                        <div class="opinion-star row">
+                            <span class="star-name col-md-4 col-xs-3">학습량</span>
+                            <span class="star col-md-8 col-xs-8"><input value="{{ evlcomment.amount_score }}"
+                                                                        type="number" class="view rating star-amount"
+                                                                        data-size="xs" disabled="true"></span>
+                        </div>
+
+                        <div class="opinion-star row">
+                            <span class="star-name col-md-4 col-xs-3">배운점</span>
+                            <span class="star col-md-8 col-xs-8"><input value="{{ evlcomment.learn_score }}"
+                                                                        type="number" class="view rating star-learning"
+                                                                        data-size="xs" disabled="true"></span>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+    <div class="col-md-3">
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/Chart.Radar.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/Chart.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/gagwan-evaluation.js') }}"></script>
+
+
+     <script type="text/javascript">
+                $('#report').click(function(){
+                   alert("신고 기능은 추후 추가될 예정입니다.");
+                });
+     </script>
+
+
+     <script type="text/javascript">
+        var radarChartData = {
+            labels: ["성적", "배운점", "출석", "학습량"],
+            datasets: [
+                {
+                    label: "Avg dataset",
+                    fillColor: "rgba(151,187,205,0.2)",
+                    strokeColor: "rgba(151,187,205,1)",
+                    pointColor: "rgba(151,187,205,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(151,187,205,1)",
+                {% if avg.avg_grade is not none %}
+                     data: [{{ avg.avg_grade }}, {{ avg.avg_learn }}, {{ avg.avg_attend }}, {{ avg.avg_amount }}]
+                {% else %}
+                     data: [0,0,0,0]
+                {% endif %}
+                }
+            ]
+        };
+
+        window.onload = function () {
+            window.myRadar = new Chart(document.getElementById("avgChart").getContext("2d")).Radar(radarChartData, {responsive: true
+            });
+        }
+
+
+    </script>
+
+
+{% endblock %}

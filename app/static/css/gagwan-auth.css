@@ -1,0 +1,86 @@
+/*
+로그인
+*/
+
+.auth-login{
+    margin: 0px;
+}
+
+.auth-login .login {
+    margin-top: 15%;
+    background-color: black; 
+    padding: 5%; 
+    color: white; 
+    border-radius:6px;
+    background-size: cover;
+}
+
+.login #login-header {
+    font-size: 24px;
+}
+
+
+.login .login-content > dd {
+    width: 80%;
+}
+
+
+.login .login-footer {
+    margin-top: 15px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.login .login-content .btn {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #7A7A7A;
+}
+
+.login .login-content #login-btn {
+    padding-left: 28px;
+    padding-right: 28px;
+}
+
+#register-btn{
+    color: white;
+    border-color: #7A7A7A;
+}
+
+#register-btn:hover{
+    color:#333;
+}
+
+/*
+회원가입
+*/
+
+.auth-register{
+    margin: 0px;
+}
+
+.auth-register .register {
+    margin-top: 7%;
+    background-color: black;
+    padding: 5%; 
+    color: white; 
+    border-radius:6px; 
+}
+
+.auth-register .register-content{
+     margin-left: 30%;
+     margin-right: 10%;
+}
+
+
+.register .register-content .btn {
+    margin-top: 15px;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-right: 35%;
+    background-color: #7A7A7A;
+}
+
