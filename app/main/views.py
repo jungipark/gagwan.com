@@ -44,20 +44,6 @@ def search_results(query):
 
     results = Lecture.query.filter(or_(Lecture.subjectNm.like("%" + query + "%"),
                                        Lecture.profNm.like("%" + query + "%"))).order_by(Lecture.semester.desc()).all()
-    """
-    results_lecture_id = db.session.query("id").filter(or_(Lecture.subjectNm.like("%" + query + "%"),
-                                       Lecture.profNm.like("%" + query + "%"))).order_by(Lecture.semester.desc()).all()
-
-    for id in results_lecture_id:
-        evl_count= EvalCount.query.filter_by(lecture_id=id[0]).first()
-        evl_count_list =[]
-        if evl_count is not None:
-            evl_count_list.append(evl_count.evl_count)
-        else:
-            evl_count_list.append("0")
-        print evl_count_list[0]
-    """
-
     return render_template('search_results.html', query=query, results=results)
 
 

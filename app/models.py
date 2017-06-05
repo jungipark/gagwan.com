@@ -100,7 +100,6 @@ class Professor(db.Model):
     dept = db.Column(db.String(64))
     photo_addr = db.Column(db.String(128), index=True)
     proCD = db.Column(db.Integer, unique=True, index=True)
-    # lectures = relationship('Lecture',backref="Professor")
 
 
 class Lecture(db.Model):
@@ -122,7 +121,6 @@ class Lecture(db.Model):
     cyberYn = db.Column(db.String(64))
     semester = db.Column(db.String(64))
     evl_count = db.Column(db.Integer)
-    #evaluations = db.relationship("Evaluation", backref="Leture")
 
 
 
